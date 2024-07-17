@@ -7,6 +7,7 @@ export const MiaProvaider=({children})=>{
     const [carrito, setCarrito] = useState(0)
 
 
+
     return (
         <miaContext.Provider value={{carrito}}>
             {children}
