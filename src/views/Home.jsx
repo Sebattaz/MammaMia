@@ -2,13 +2,15 @@ import { Container, Card, Button, ListGroup, Row, Col} from 'react-bootstrap'
 import { miaContext } from '../context/MiaContext'
 import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import BtnCarrito from '../componets/BtnCarrito'
+import { PiEyesFill } from "react-icons/pi";
 
 const Home = () => {
 
     const {pizzas} = useContext(miaContext)
 
   return (
-    <Container className='h-100' >
+    <Container className='h-100 mTop' >
       <div className='banner text-center text-white p-3'>
         <h1>¡Pizzería Mamma Mia!</h1>
         <h4>¡Tenemos las mejores pizzas que podras encontrar!</h4>
@@ -34,8 +36,8 @@ const Home = () => {
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <h3><p>{`$ ${piz.price.toLocaleString('es-ES')}`}</p></h3>
-                            <Button className='mx-2 text-white' variant="info" as={NavLink} to={`/pizzas/${piz.id}`}>Ver más</Button>
-                            <Button className='mx-2' variant="danger">Añadir</Button>
+                            <Button className='mx-2 text-white' variant="info" as={NavLink} to={`/pizzas/${piz.id}`}><PiEyesFill /> más</Button>
+                            <BtnCarrito price={piz.price} />
                         </ListGroup.Item>
                 </ListGroup>
                 </Card.Body>

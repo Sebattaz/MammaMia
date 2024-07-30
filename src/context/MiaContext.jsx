@@ -16,10 +16,15 @@ export const MiaProvaider=({children})=>{
       })
     }, [])
     
+    const addCarrito =(price)=>{
+
+        setCarrito(carrito + price)
+        
+    }
     
 
     return (
-        <miaContext.Provider value={{carrito, pizzas}}>
+        <miaContext.Provider value={{carrito, pizzas, addCarrito}}>
             {children}
         </miaContext.Provider>
 

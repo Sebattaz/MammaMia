@@ -1,9 +1,11 @@
 import React, { useContext } from 'react'
 import { Container, Button, Row, Col, Card, ListGroup } from 'react-bootstrap'
-import { useParams, Navigate, NavLink } from 'react-router-dom'
+import { useParams, NavLink } from 'react-router-dom'
 import { miaContext } from '../context/MiaContext';
 import { FcHome } from "react-icons/fc";
 import { LuPizza } from "react-icons/lu";
+import BtnCarrito from '../componets/BtnCarrito';
+
 
 const PizzasView = () => {
 
@@ -14,7 +16,7 @@ const PizzasView = () => {
     console.log(pizza)
 
   return (
-    <Container className='mt-2'>
+    <Container className='mTop'>
         <Button className='mb-2' variant='secondary' as={NavLink} to={'/'}><h4><FcHome /></h4></Button>
     <Row>
       <Col md={6}>
@@ -37,7 +39,7 @@ const PizzasView = () => {
               ))}
             </ListGroup>
             <h3 className="mt-3">Precio: ${pizza.price.toLocaleString('es-ES')}</h3>
-            <Button variant="primary" className="mt-3">Añadir al carrito</Button>
+            <BtnCarrito price={pizza.price} />
           </Card.Body>
         </Card>
       </Col>
