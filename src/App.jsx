@@ -5,6 +5,7 @@ import { MiaProvaider } from './context/MiaContext'
 import { Route, Routes } from 'react-router-dom'
 import Carrito from './views/Carrito'
 import Home from './views/Home'
+import PizzasView from './views/PizzasView'
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/carrito' element={<Carrito/>} />
+          <Route path='/pizzas/:id' element={<PizzasView/>} />
         </Routes>
     </MiaProvaider>
   )

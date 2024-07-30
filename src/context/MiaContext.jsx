@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-import piz from '/public/pizzas.json'
 export const miaContext = createContext();
 
 export const MiaProvaider=({children})=>{

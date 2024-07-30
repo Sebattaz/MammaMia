@@ -1,10 +1,11 @@
-import { Container, Card, Button, ListGroup, Row, Col } from 'react-bootstrap'
+import { Container, Card, Button, ListGroup, Row, Col, Nav } from 'react-bootstrap'
 import { miaContext } from '../context/MiaContext'
 import { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Home = () => {
 
-    const {pizzas } = useContext(miaContext)
+    const {pizzas} = useContext(miaContext)
 
   return (
     <Container className='h-100' >
@@ -25,15 +26,15 @@ const Home = () => {
                         <ListGroup.Item>
                         <h5>Ingredientes:</h5>
                         <ul>
-                        {piz.ingredients.map(ing=>(
-                            <li>{ing.charAt(0).toUpperCase()+ing.slice(1)}</li>
+                        {piz.ingredients.map((ing,i)=>(
+                            <li key={i}>{ing.charAt(0).toUpperCase()+ing.slice(1)}</li>
                         ))}
                         
                         </ul>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <p>{`$ ${piz.price.toLocaleString('es-ES')}`}</p>
-                            <Button className='mx-2 text-white' variant="info">Ver más</Button>
+                            <h3><p>{`$ ${piz.price.toLocaleString('es-ES')}`}</p></h3>
+                            <Button className='mx-2 text-white' variant="info" as={NavLink} to={`/pizzas/${piz.id}`}>Ver más</Button>
                             <Button className='mx-2' variant="danger">Añadir</Button>
                         </ListGroup.Item>
                 </ListGroup>
