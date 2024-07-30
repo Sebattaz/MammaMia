@@ -1,7 +1,9 @@
 import React, { useContext } from 'react'
 import { Container, Button, Row, Col, Card, ListGroup } from 'react-bootstrap'
-import { useParams, Navigate } from 'react-router-dom'
+import { useParams, Navigate, NavLink } from 'react-router-dom'
 import { miaContext } from '../context/MiaContext';
+import { FcHome } from "react-icons/fc";
+import { LuPizza } from "react-icons/lu";
 
 const PizzasView = () => {
 
@@ -12,7 +14,8 @@ const PizzasView = () => {
     console.log(pizza)
 
   return (
-    <Container className='mt-5'>
+    <Container className='mt-2'>
+        <Button className='mb-2' variant='secondary' as={NavLink} to={'/'}><h4><FcHome /></h4></Button>
     <Row>
       <Col md={6}>
         <Card>
@@ -28,6 +31,7 @@ const PizzasView = () => {
             <ListGroup variant="flush">
               {pizza.ingredients.map((i, index) => (
                 <ListGroup.Item key={index}>
+                  <LuPizza /> 
                   {i.charAt(0).toUpperCase() + i.slice(1)}
                 </ListGroup.Item>
               ))}
@@ -38,6 +42,7 @@ const PizzasView = () => {
         </Card>
       </Col>
     </Row>
+    
   </Container>
   )
 }
