@@ -13,8 +13,6 @@ const PizzasView = () => {
     const {pizzas} = useContext(miaContext);
     const pizza = pizzas.find((b)=> b.id === id);
 
-    console.log(pizza)
-
   return (
     <Container className='mTop'>
         <Button className='mb-2' variant='secondary' as={NavLink} to={'/'}><h4><FcHome /></h4></Button>
@@ -39,7 +37,7 @@ const PizzasView = () => {
               ))}
             </ListGroup>
             <h3 className="mt-3">Precio: ${pizza.price.toLocaleString('es-ES')}</h3>
-            <BtnCarrito price={pizza.price} />
+            <BtnCarrito price={pizza.price} item={pizza.id} />
           </Card.Body>
         </Card>
       </Col>

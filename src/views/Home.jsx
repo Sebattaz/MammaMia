@@ -37,7 +37,7 @@ const Home = () => {
                         <ListGroup.Item>
                             <h3><p>{`$ ${piz.price.toLocaleString('es-ES')}`}</p></h3>
                             <Button className='mx-2 text-white' variant="info" as={NavLink} to={`/pizzas/${piz.id}`}><PiEyesFill /> más</Button>
-                            <BtnCarrito price={piz.price} />
+                            <BtnCarrito price={piz.price} item={piz.id} />
                         </ListGroup.Item>
                 </ListGroup>
                 </Card.Body>

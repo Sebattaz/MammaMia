@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Container, ListGroup } from 'react-bootstrap'
+import { miaContext } from '../context/MiaContext'
+
 
 const Carrito = () => {
+  const {listPedido, napo, espa} = useContext(miaContext);
   return (
-    <div>
-      <h1>Carrito</h1>
-    </div>
+    <Container className='mTop'>
+      <ListGroup>
+          {
+            listPedido.map((list,i)=>(
+              <ListGroup.Item className='d-flex' key={i}>
+                <img src={list.img} alt={list.name} />
+                <h4>{list.name}{napo}</h4>
+              </ListGroup.Item>
+            ))
+          }
+      </ListGroup>
+    </Container>
   )
 }
 

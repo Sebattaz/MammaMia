@@ -5,11 +5,11 @@ import { BsCart4 } from "react-icons/bs";
 
 
 
-const BtnCarrito = ({price}) => {
+const BtnCarrito = ({price,item}) => {
     const {addCarrito} = useContext(miaContext)
 
   return (
-    <Button onClick={()=>addCarrito(price)} variant="danger" className='mx-2 text-white' >Añadir <BsCart4 /></Button>
+    <Button onClick={()=>addCarrito(price,item)} variant="danger" className='mx-2 text-white' >Añadir <BsCart4 /></Button>
   )
 }
 
