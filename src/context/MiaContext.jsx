@@ -6,12 +6,7 @@ export const MiaProvaider=({children})=>{
     const [carrito, setCarrito] = useState(0)
     const [pizzas, setPizzas] = useState([])
     const [listPedido, setListPedido] = useState([])
-    const [napo, setNapo] = useState(0)
-    const [espa, setEspa] = useState(0)
-    const [sala, setSala] = useState(0)
-    const [cuatro, setCuatro] = useState(0)
-    const [bacon, setBacon] = useState(0)
-    const [pollo, setPollo] = useState(0)
+    
 
     useEffect(() => {
       fetch('/public/pizzas.json')
@@ -22,28 +17,23 @@ export const MiaProvaider=({children})=>{
       })
     }, [])
     
-    const addCarrito=(price,item)=>{
+    const addCarrito=(price,id, img, name)=>{
         setCarrito(carrito + price)
-        pedido(item)
+        pedido(id, img, name, price)
         
     }
-    const pedido=(item)=>{
-        if(listPedido.find((busqueda)=>busqueda.id === item)){
-            cantidades(item);
+    const pedido=(id, img, name, price)=>{
+        if(listPedido.find((busqueda)=>busqueda.id === id)){
+            const list = listPedido.map((c)=> 
+                c.id === id?{...c, cont: c.cont+1}:c 
+            )
+            setListPedido(list)
+            
         }else{
-        const listado = pizzas.find((p)=> p.id === item)
-        setListPedido([...listPedido, listado])
+            
+            setListPedido([...listPedido, {id, img, name, price, cont:1}])
         }
-    }
-    const cantidades=(item)=>{
-        if(item === 'P001'){
-            setNapo(napo+1)
-            console.log(napo)
-        }
-        if(item === 'P002'){
-            setEspa(espa+1)
-            console.log(espa)
-        }
+        console.log(listPedido)
     }
     
     const contexValues={
@@ -51,11 +41,7 @@ export const MiaProvaider=({children})=>{
         pizzas,
         addCarrito,
         pedido,
-        listPedido,
-        napo,
-        espa,
-        
-
+        listPedido
     }
 
     return (

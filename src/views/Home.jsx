@@ -35,9 +35,9 @@ const Home = () => {
                         </ul>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <h3><p>{`$ ${piz.price.toLocaleString('es-ES')}`}</p></h3>
+                            <h3><p>{`$ ${piz.price.toLocaleString('es-CL')}`}</p></h3>
                             <Button className='mx-2 text-white' variant="info" as={NavLink} to={`/pizzas/${piz.id}`}><PiEyesFill /> más</Button>
-                            <BtnCarrito price={piz.price} item={piz.id} />
+                            <BtnCarrito price={piz.price} id={piz.id} img={piz.img} name={piz.name} />
                         </ListGroup.Item>
                 </ListGroup>
                 </Card.Body>

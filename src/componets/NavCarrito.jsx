@@ -19,7 +19,7 @@ const NavCarrito = () => {
         <Navbar.Collapse id='basic-navbar-nav' className='justify-content-end'>
             <Nav className='mx-5'>
                 <Nav.Link as={NavLink} to={"/carrito"}>
-                    <h4 className='text-white'><BsCart4 /> {`$ ${carrito.toLocaleString('es-ES')}`}</h4>
+                    <h4 className='text-white'><BsCart4 /> {`$ ${carrito.toLocaleString('es-CL')}`}</h4>
                 </Nav.Link>
             </Nav>
         </Navbar.Collapse>

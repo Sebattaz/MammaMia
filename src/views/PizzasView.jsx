@@ -36,8 +36,8 @@ const PizzasView = () => {
                 </ListGroup.Item>
               ))}
             </ListGroup>
-            <h3 className="mt-3">Precio: ${pizza.price.toLocaleString('es-ES')}</h3>
-            <BtnCarrito price={pizza.price} item={pizza.id} />
+            <h3 className="mt-3">Precio: ${pizza.price.toLocaleString('es-CL')}</h3>
+            <BtnCarrito price={pizza.price} id={pizza.id} img={pizza.img} name={pizza.name} />
           </Card.Body>
         </Card>
       </Col>
