@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
+import swal from "sweetalert"
 export const miaContext = createContext();
+
 
 export const MiaProvaider=({children})=>{
     
@@ -20,6 +22,7 @@ export const MiaProvaider=({children})=>{
     const addCarrito=(price,id, img, name)=>{
         setCarrito(carrito + price)
         pedido(id, img, name, price)
+        swal(`${name.toUpperCase()}`,`Pizza ${name} añadida con éxito`)
         
     }
     const pedido=(id, img, name, price)=>{
@@ -30,18 +33,47 @@ export const MiaProvaider=({children})=>{
             setListPedido(list)
             
         }else{
-            
+
             setListPedido([...listPedido, {id, img, name, price, cont:1}])
         }
         console.log(listPedido)
     }
+    const More=(id, price)=>{
+        setCarrito(carrito + price)
+        if(listPedido.find((busque)=>busque.id === id)) { 
+            const bus = listPedido.map((findd)=>(
+                findd.id=== id ? {...findd, cont: findd.cont+1} : undefined 
+
+            ))
+            setListPedido(bus)
+        }
+        
+
+    }
+    const Less=(id, price, cont)=>{
+        if(cont===0){
+            swal("ALERTA","No puede ser menor")
+        }else{
+        setCarrito(carrito - price)
+        if(listPedido.find((busque)=>busque.id === id)) { 
+            const bus = listPedido.map((findd)=>(
+                findd.id=== id ? {...findd, cont: findd.cont-1} : undefined 
+
+            ))
+            setListPedido(bus)
+        }
+        }
+    }
+
     
     const contexValues={
         carrito,
         pizzas,
         addCarrito,
         pedido,
-        listPedido
+        listPedido,
+        More,
+        Less,
     }
 
     return (
